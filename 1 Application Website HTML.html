@@ -1,0 +1,1100 @@
+		<!DOCTYPE html>
+		<html lang="en">
+		<head>
+		  <meta charset="UTF-8">
+		  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		  <title>PinkStudio Video Editor & Portfolio Suite</title>
+		  <!-- Font Awesome 6 — supports ALL icons -->
+		  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+		  <!-- Tailwind CSS CDN -->
+		  <script src="https://cdn.tailwindcss.com"></script>
+		  <!-- Google Fonts: Inter -->
+		  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+		  
+		  <style>
+			html, body {
+			  min-height: 100vh;
+			  margin: 0;
+			  padding: 0;
+			  overflow-x: hidden;
+			  font-family: 'Inter', sans-serif;
+			  background-color: #0f172a;
+			  color: #1e293b;
+			}
+			
+			/* Custom Hot Pink Color Palette */
+			.bg-pink-main {
+			  background-color: #fc0384;
+			}
+			.bg-pink-main:hover {
+			  background-color: #d9006c;
+			}
+			.text-pink-main {
+			  color: #fc0384;
+			}
+			.border-pink-main {
+			  border-color: #fc0384;
+			}
+
+			/* Top Nav Button styling */
+			.nav-btn {
+			  background-color: #fc0384;
+			  color: #ffffff;
+			  font-weight: 700;
+			  padding: 6px 14px;
+			  border-radius: 8px;
+			  font-size: 13px;
+			  transition: all 0.2s ease;
+			  box-shadow: 0 2px 4px rgba(252, 3, 132, 0.2);
+			}
+			.nav-btn:hover, .nav-btn.active {
+			  background-color: #d9006c;
+			  transform: translateY(-1px);
+			}
+
+			/* Hero CTA Section */
+			.hero-section {
+			  background-color: #333333;
+			  color: #ffffff;
+			  text-align: center;
+			  padding: 40px 20px;
+			  width: 100%;
+			  border-bottom: 1px solid #444444;
+			  display: flex;
+			  flex-direction: column;
+			  align-items: center;
+			  justify-content: center;
+			}
+			.hero-section h2 {
+			  font-size: 32px;
+			  font-weight: 800;
+			  margin: 0 0 12px 0;
+			  color: #ffffff;
+			  letter-spacing: -0.5px;
+			}
+			.hero-section p {
+			  font-size: 15px;
+			  color: #dddddd;
+			  max-width: 700px;
+			  margin: 0 0 24px 0;
+			  line-height: 1.5;
+			}
+			.cta-button {
+			  background-color: #ff5522;
+			  color: #ffffff;
+			  font-weight: 700;
+			  font-size: 15px;
+			  padding: 20px 28px;
+			  border-radius: 6px;
+			  text-decoration: none;
+			  display: inline-block;
+			  transition: all 0.2s ease;
+			  box-shadow: 0 4px 10px rgba(255, 85, 34, 0.3);
+			  border: none;
+			  cursor: pointer;
+			}
+			.cta-button:hover {
+			  background-color: #e04411;
+			  transform: translateY(-2px);
+			  box-shadow: 0 6px 14px rgba(255, 85, 34, 0.4);
+			  color: #ffffff;
+			}
+
+			/* Prominent Call To Action Button for Bottom/Middle */
+			.cta-roadmap-btn {
+			  background-color: #e04411;
+			  color: #ffffff;
+			  font-weight: 800;
+			  font-size: 13px;
+			  letter-spacing: 0.5px;
+			  padding: 20px 28px;
+			  border-radius: 10px;
+			  transition: all 0.2s ease-in-out;
+			  box-shadow: 0 4px 12px rgba(252, 3, 132, 0.35);
+			  display: inline-flex;
+			  align-items: center;
+			  justify-content: center;
+			  width: 100%;
+			  text-transform: uppercase;
+			  cursor: pointer;
+			  border: none;
+			}
+			.cta-roadmap-btn:hover {
+			  background-color: #c90060;
+			  transform: translateY(-1px);
+			  box-shadow: 0 6px 16px rgba(252, 3, 132, 0.45);
+			}
+
+			/* Forgot password white button */
+			.forgot-link-btn {
+			  background-color: #ffffff;
+			  color: #334155;
+			  border: 1px solid #cbd5e1;
+			  padding: 1px 10px;
+			  border-radius: 6px;
+			  cursor: pointer;
+			  font-size: 11px;
+			  font-weight: 500;
+			  text-align: center;
+			  text-decoration: none;
+			  display: inline-block;
+			  margin-top: 3px;
+			  transition: all 0.2s ease;
+			  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+			}
+			.forgot-link-btn:hover {
+			  background-color: #f1f5f9;
+			  border-color: #94a3b8;
+			  color: #fc0384;
+			}
+
+			/* Range slider customized styling */
+			input[type=range] {
+			  -webkit-appearance: none;
+			  width: 100%;
+			  background: transparent;
+			}
+			input[type=range]:focus {
+			  outline: none;
+			}
+			input[type=range]::-webkit-slider-runnable-track {
+			  width: 100%;
+			  height: 6px;
+			  cursor: pointer;
+			  background: #334155;
+			  border-radius: 4px;
+			}
+			input[type=range]::-webkit-slider-thumb {
+			  height: 16px;
+			  width: 16px;
+			  border-radius: 50%;
+			  background: #fc0384;
+			  cursor: pointer;
+			  -webkit-appearance: none;
+			  margin-top: -5px;
+			  box-shadow: 0 0 8px rgba(252, 3, 132, 0.6);
+			  transition: transform 0.1s ease;
+			}
+			input[type=range]::-webkit-slider-thumb:hover {
+			  transform: scale(1.2);
+			}
+
+						/* ===== VIDEO SECTION — MAGENTA PINK CONTAINER ===== */
+						.video-container {
+							text-align: center;
+							padding: 40px 20px;
+							background-color: #e20074; /* Kept light gray as in screenshot */
+							color: #FFFFFF; /* Black text inside this section */
+						}
+						.video-container h3 {
+							margin-bottom: 25px;
+							font-size: 20px;
+						}
+						video {
+							display: block;
+							margin: 0 auto;
+							max-width: 100%;
+							height: auto;
+							border-radius: 8px;
+							box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+						}
+
+			/* Payment container styling matching exact screenshot */
+			.payment-container {
+			  display: flex;
+			  flex-direction: column;
+			  align-items: center;
+			  justify-content: center;
+			  padding: 24px 0 12px 0;
+			  text-align: center;
+			  gap: 12px;
+			}
+			.icons-group {
+			  display: flex;
+			  gap: 12px;
+			  align-items: center;
+			  justify-content: center;
+			  flex-wrap: wrap;
+			}
+			.payment-badge {
+			  display: inline-flex;
+			  align-items: center;
+			  justify-content: center;
+			  height: 32px;
+			  border-radius: 4px;
+			  font-weight: 800;
+			  font-size: 13px;
+			  padding: 0 10px;
+			  color: white;
+			  text-transform: uppercase;
+			  letter-spacing: 0.5px;
+			}
+			
+			/* Payment Icon Styles matching footer screenshot */
+			.badge-visa { background-color: #1a1f71; }
+			.badge-mastercard { background-color: #eb001b; }
+			.badge-amex { background-color: #007bc1; }
+			.badge-discover { background-color: #f9a01b; color: #111; }
+			.badge-paypal { background-color: #003087; }
+			.badge-gcash {
+			  background-color: #007CFF;
+			  width: 34px;
+			  height: 34px;
+			  border-radius: 50%;
+			  padding: 0;
+			}
+			.badge-bitcoin {
+			  background-color: #f7931a;
+			  width: 34px;
+			  height: 34px;
+			  border-radius: 50%;
+			  padding: 0;
+			  font-size: 18px;
+			}
+
+			.payment-btn {
+			  display: inline-flex;
+			  align-items: center;
+			  justify-content: center;
+			  cursor: pointer;
+			  transition: transform 0.2s ease;
+			  text-decoration: none;
+			}
+			.payment-btn:hover {
+			  transform: translateY(-2px);
+			}
+
+			/* Auth Tab Active Style */
+			.auth-tab-btn.active {
+			  border-bottom: 2px solid #fc0384;
+			  color: #fc0384;
+			  font-weight: 700;
+			}
+		  </style>
+		</head>
+		<body class="min-h-screen w-screen flex flex-col justify-between bg-slate-950 overflow-x-hidden">
+
+		  <!-- ================= TOP NAVIGATION BAR (#fc0384 BACKGROUND) ================= -->
+		  <header class="w-full bg-[#fc0384] border-b border-pink-600 px-4 py-2 shrink-0 z-40 shadow-sm">
+			<nav class="max-w-7xl mx-auto flex justify-between items-start">
+			  
+			  <!-- Left Navigation Buttons -->
+			  <div class="flex items-center gap-2 flex-wrap">
+				<button onclick="switchTab('editor-tab')" id="btn-editor-tab" class="nav-btn active">HOME</button>
+				<button onclick="switchTab('services-tab')" id="btn-services-tab" class="nav-btn">Services</button>
+				<button onclick="switchTab('support-tab')" id="btn-support-tab" class="nav-btn">Support</button>
+				<button onclick="switchTab('faq-tab')" id="btn-faq-tab" class="nav-btn">FAQs'</button>
+				<button onclick="switchTab('about-tab')" id="btn-about-tab" class="nav-btn">About</button>
+			  </div>
+
+			  <!-- Right Navigation Group -->
+			  <div class="flex flex-col items-end shrink-0">
+				<div class="flex items-center gap-2">
+				  <button type="button" class="nav-btn" onclick="openSignInModal()">Sign In</button>
+				  <button type="button" class="nav-btn" onclick="openSignUpModal()">Sign Up</button>
+				</div>
+				<!-- Forgot Password Link as White Onclick Button -->
+				<button type="button" class="forgot-link-btn" onclick="openSignInModal(true)">
+				  Forgot Password
+				</button>
+			  </div>
+
+			</nav>
+		  </header>
+
+		  <!-- TOP CALL TO ACTION HERO SECTION -->
+		  <section class="hero-section">
+			<h2>Ready to Elevate Your Brand Content?</h2>
+			<p>Get custom business designs and high-quality news articles tailored exactly to your audience.</p>
+			<button onclick="openLeadModal('Top CTA - Get Started Today!')" class="cta-button">Get Started Today!</button>
+		  </section>
+
+		  <!-- ================= MAIN CONTENT AREA ================= -->
+		  <div class="video-container" style="text-align: center;">
+			<video width="840" height="480" controls style="max-width: 100%;">
+				<source src="https://github.com/user-attachments/assets/f52b6811-cf4e-4aac-b02a-f631e59bbb9b" type="video/mp4">
+				Your browser does not support the video tag.
+			</video>
+		  </div>
+
+			  </div>
+			</div>
+
+			<!-- TAB 2: SERVICES & NICHES -->
+			<div id="services-tab" class="tab-content hidden bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
+			  <div class="flex justify-between items-center pb-3 border-b border-gray-100 mb-4">
+				<div>
+				  <span class="text-[10px] font-bold uppercase tracking-wider text-pink-main">Employer Value</span>
+				  <h2 class="text-xl font-extrabold text-gray-900">My name is Audie Pino, I bridge creative video storytelling, clean web development, back-office operations, and empathetic customer support to deliver maximum ROI for growing organizations and innovative brands. Front-End Dev, Video Editor, Customer Support & Back-Office Specialist.</h2>
+				</div>
+				<button onclick="openLeadModal('Hire Me Request')" class="px-4 py-2 bg-pink-main text-white font-bold text-xs rounded-lg hover:bg-pink-main/90">
+				  Hire Me
+				</button>
+			  </div>
+
+			  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+				<div class="p-5 rounded-xl bg-slate-50 border border-gray-200 hover:border-pink-300 transition-colors">
+				  <i class="fa-solid fa-code text-pink-main text-3xl mb-3"></i>
+				  <h3 class="text-base font-bold text-gray-900">Front-End Developer</h3>
+				  <p class="text-xs text-gray-600 mt-2 leading-relaxed">Specializing in HTML5, CSS3, JavaScript ES6+, responsive UI execution, fast loading times, single-file web app architecture, and component optimization.</p>
+				</div>
+				<div class="p-5 rounded-xl bg-slate-50 border border-gray-200 hover:border-pink-300 transition-colors">
+				  <i class="fa-solid fa-wand-magic-sparkles text-pink-main text-3xl mb-3"></i>
+				  <h3 class="text-base font-bold text-gray-900">Video Editor</h3>
+				  <p class="text-xs text-gray-600 mt-2 leading-relaxed">Delivering high-retention cuts, short-form reels/TikToks, 4K long-form content, motion graphics, audio balancing, color grading, and conversion-focused edits.</p>
+				</div>
+				<div class="p-5 rounded-xl bg-slate-50 border border-gray-200 hover:border-pink-300 transition-colors">
+				  <i class="fa-solid fa-headset text-pink-main text-3xl mb-3"></i>
+				  <h3 class="text-base font-bold text-gray-900">Customer Support</h3>
+				  <p class="text-xs text-gray-600 mt-2 leading-relaxed">Empathetic technical troubleshooting, high CSAT retention, ticket management, user onboarding, and seamless client inquiry resolutions across channels.</p>
+				</div>
+				<div class="p-5 rounded-xl bg-slate-50 border border-gray-200 hover:border-pink-300 transition-colors">
+				  <i class="fa-solid fa-file-excel text-pink-main text-3xl mb-3"></i>
+				  <h3 class="text-base font-bold text-gray-900">Back-Office Assistant</h3>
+				  <p class="text-xs text-gray-600 mt-2 leading-relaxed">Advanced Excel/Spreadsheets, CRM administration (HubSpot, Salesforce), data entry, workflow automation, and executive support.</p>
+				</div>
+			  </div>
+			</div>
+
+			<!-- TAB 3: SUPPORT -->
+			<div id="support-tab" class="tab-content hidden bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
+			  <h2 class="text-xl font-extrabold text-gray-900 mb-2">Support Statement & SLAs</h2>
+			  <p class="text-sm text-gray-600 mb-6">My name is Audie Pino, I bridge creative video storytelling, clean web development, back-office operations, and empathetic customer support to deliver maximum ROI for growing organizations and innovative brands. Front-End Dev, Video Editor, Customer Support & Back-Office Specialist. Dedicated response times, secure asset management, technical support, and full issue-tracking accountability.</p>
+			  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+				<div class="p-4 bg-slate-50 rounded-lg border border-gray-200">
+				  <h4 class="font-bold text-sm text-gray-800 mb-1">Developer & Technical Support SLA</h4>
+				  <p class="text-xs text-gray-600">Guaranteed under 2-hour turnaround for urgent web application bug fixes and UI rendering issues.</p>
+				</div>
+				<div class="p-4 bg-slate-50 rounded-lg border border-gray-200">
+				  <h4 class="font-bold text-sm text-gray-800 mb-1">Video & Operations Revision SLA</h4>
+				  <p class="text-xs text-gray-600">Iterative revisions and operations data reporting completed within 24 hours of client requests.</p>
+				</div>
+			  </div>
+			  <button onclick="openLeadModal('Support SLA Inquiry')" class="px-5 py-2.5 bg-pink-main text-white font-bold text-xs rounded-lg shadow">Contact Support Desk</button>
+			</div>
+
+			<!-- TAB 4: FAQS -->
+			<div id="faq-tab" class="tab-content hidden bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
+			  <h2 class="text-xl font-extrabold text-gray-900 mb-4">Frequently Asked Questions</h2>
+			  <div class="space-y-3 text-xs">
+				<div class="p-4 border rounded-xl bg-gray-50">
+				  <strong class="text-sm text-gray-900 block mb-1">How do these core niches work together for employers?</strong>
+				  <p class="text-gray-600 leading-relaxed">I handle front-end web development to build your web platform, craft conversion-driven video edits to market your product, manage customer support for retention, and organize back-office CRM and data operations—providing a multi-skilled execution stack.</p>
+				</div>
+				<div class="p-4 border rounded-xl bg-gray-50">
+				  <strong class="text-sm text-gray-900 block mb-1">What is the P100K Roadmap?</strong>
+				  <p class="text-gray-600 leading-relaxed">A strategic growth framework designed for video editors, web developers, and digital operators scaling toward high-ticket clients and automated pipelines.</p>
+				</div>
+				<div class="p-4 border rounded-xl bg-gray-50">
+				  <strong class="text-sm text-gray-900 block mb-1">Can I hire for individual roles instead of all four?</strong>
+				  <p class="text-gray-600 leading-relaxed">Targeted contracts are available for front-end web development, dedicated video editing, customer support operations, or back-office CRM and Excel management.</p>
+				</div>
+			  </div>
+			</div>
+
+			<!-- TAB 5: ABOUT -->
+			<div id="about-tab" class="tab-content hidden bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
+			  <h2 class="text-xl font-extrabold text-gray-900 mb-2">About Me</h2>
+			  <p class="text-xs sm:text-sm text-gray-600 leading-relaxed mb-6">My name is Audie Pino, I bridge creative video storytelling, clean web development, back-office operations, and empathetic customer support to deliver maximum ROI for growing organizations and innovative brands.</p>
+			  <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center text-xs">
+				<div class="p-4 bg-pink-50 rounded-xl border border-pink-100">
+				  <span class="font-extrabold text-2xl text-pink-main block mb-1">100%</span>
+				  <span class="text-gray-700 font-medium">Responsive Web Code</span>
+				</div>
+				<div class="p-4 bg-pink-50 rounded-xl border border-pink-100">
+				  <span class="font-extrabold text-2xl text-pink-main block mb-1">99%</span>
+				  <span class="text-gray-700 font-medium">Customer CSAT Rating</span>
+				</div>
+				<div class="p-4 bg-pink-50 rounded-xl border border-pink-100">
+				  <span class="font-extrabold text-2xl text-pink-main block mb-1">4K</span>
+				  <span class="text-gray-700 font-medium">High-Retention Edits</span>
+				</div>
+				<div class="p-4 bg-pink-50 rounded-xl border border-pink-100">
+				  <span class="font-extrabold text-2xl text-pink-main block mb-1">100%</span>
+				  <span class="text-gray-700 font-medium">CRM & Excel Accuracy</span>
+				</div>
+			  </div>
+			</div>
+
+		  </main>
+
+		  <!-- MIDDLE CALL TO ACTION BAR -->
+		  <div class="w-full bg-slate-900 px-4 py-2 shrink-0 border-t border-slate-800 flex justify-center">
+			<button onclick="openLeadModal('Middle CTA - Act Fast')" 
+					class="cta-roadmap-btn max-w-lg">
+			  Limited time only – act fast!
+			</button>
+		  </div>
+
+		  <!-- ================= T-MOBILE STYLE EXPLORE SECTION ================= -->
+		  <section class="w-full bg-[#f4f4f4] py-10 px-4 border-t border-gray-200">
+			<div class="max-w-7xl mx-auto flex flex-col items-center">
+			  
+			  <!-- Top Pill Button -->
+			  <button onclick="openLeadModal('More Benefits Exploration')" 
+					  class="bg-[#fc0384] text-white font-bold text-xs px-5 py-2 rounded-lg hover:bg-[#d9006c] transition-colors shadow-sm mb-6">
+				Discover more benefits
+			  </button>
+
+			  <!-- Bold Title -->
+			  <h2 class="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-10 text-center tracking-tight">
+				Explore My Services.
+			  </h2>
+
+			  <!-- 6 Icon Columns -->
+			  <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 sm:gap-8 w-full max-w-6xl">
+				
+				<!-- Column 1: Front-End Dev -->
+				<div class="flex flex-col items-center text-center group cursor-pointer" onclick="switchTab('services-tab')">
+				  <div class="w-16 h-16 sm:w-20 sm:h-20 mb-3 flex items-center justify-center relative">
+					<svg class="w-14 h-14 text-gray-900 group-hover:scale-105 transition-transform" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+					  <rect x="2" y="3" width="20" height="18" rx="2" stroke="currentColor"/>
+					  <line x1="2" y1="8" x2="22" y2="8" stroke="currentColor"/>
+					  <circle cx="5" cy="5.5" r="0.8" fill="#fc0384" stroke="none"/>
+					  <circle cx="8" cy="5.5" r="0.8" fill="#fc0384" stroke="none"/>
+					  <circle cx="11" cy="5.5" r="0.8" fill="#fc0384" stroke="none"/>
+					  <path d="M7 13l3 3-3 3M13 19h4" stroke="#fc0384" stroke-linecap="round" stroke-linejoin="round"/>
+					</svg>
+				  </div>
+				  <span class="font-extrabold text-xs tracking-wider text-gray-900 uppercase">FRONT-END DEV</span>
+				</div>
+
+				<!-- Column 2: Video Editing -->
+				<div class="flex flex-col items-center text-center group cursor-pointer" onclick="switchTab('services-tab')">
+				  <div class="w-16 h-16 sm:w-20 sm:h-20 mb-3 flex items-center justify-center relative">
+					<svg class="w-14 h-14 text-gray-900 group-hover:scale-105 transition-transform" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+					  <rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor"/>
+					  <path d="M3 9h18M3 15h18" stroke="currentColor"/>
+					  <path d="M10 11l5 3-5 3v-6z" fill="#fc0384" stroke="none"/>
+					  <circle cx="18" cy="6.5" r="1.5" fill="#fc0384" stroke="none"/>
+					</svg>
+				  </div>
+				  <span class="font-extrabold text-xs tracking-wider text-gray-900 uppercase">VIDEO EDITING</span>
+				</div>
+
+				<!-- Column 3: Customer Support -->
+				<div class="flex flex-col items-center text-center group cursor-pointer" onclick="switchTab('services-tab')">
+				  <div class="w-16 h-16 sm:w-20 sm:h-20 mb-3 flex items-center justify-center relative">
+					<svg class="w-14 h-14 text-gray-900 group-hover:scale-105 transition-transform" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+					  <path d="M12 21c-4.97 0-9-4.03-9-9a9 9 0 0118 0c0 4.97-4.03 9-9 9z" stroke="currentColor"/>
+					  <path d="M12 7a5 5 0 00-5 5v2a2 2 0 002 2h1a1 1 0 001-1v-3a1 1 0 00-1-1H8" stroke="currentColor"/>
+					  <path d="M12 7a5 5 0 015 5v2a2 2 0 01-2 2h-1a1 1 0 01-1-1v-3a1 1 0 011-1h2" stroke="currentColor"/>
+					  <circle cx="12" cy="12" r="2.5" fill="#fc0384" stroke="none"/>
+					</svg>
+				  </div>
+				  <span class="font-extrabold text-xs tracking-wider text-gray-900 uppercase">CUSTOMER SUPPORT</span>
+				</div>
+
+				<!-- Column 4: Speed & Delivery -->
+				<div class="flex flex-col items-center text-center group cursor-pointer" onclick="openLeadModal('Speed & Delivery Consultation')">
+				  <div class="w-16 h-16 sm:w-20 sm:h-20 mb-3 flex items-center justify-center relative">
+					<svg class="w-14 h-14 text-gray-900 group-hover:scale-105 transition-transform" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+					  <path d="M3 12l18-9-9 18-2-7-7-2z" stroke="currentColor" stroke-linejoin="round"/>
+					  <path d="M12 13l3-3" stroke="#fc0384" stroke-width="2"/>
+					  <circle cx="18" cy="6" r="1.5" fill="#fc0384"/>
+					</svg>
+				  </div>
+				  <span class="font-extrabold text-xs tracking-wider text-gray-900 uppercase">SPEED & DELIVERY</span>
+				</div>
+
+				<!-- Column 5: Quality Guarantee -->
+				<div class="flex flex-col items-center text-center group cursor-pointer" onclick="openLeadModal('Quality Guarantee Details')">
+				  <div class="w-16 h-16 sm:w-20 sm:h-20 mb-3 flex items-center justify-center relative">
+					<svg class="w-14 h-14 text-gray-900 group-hover:scale-105 transition-transform" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+					  <path d="M12 2l2.4 4.8 5.3.8-3.8 3.7.9 5.3-4.8-2.5-4.8 2.5.9-5.3-3.8-3.7 5.3-.8L12 2z" fill="#fc0384" stroke="#fc0384"/>
+					  <path d="M4 17c2 2 5 3 8 3s6-1 8-3" stroke="currentColor" stroke-linecap="round"/>
+					</svg>
+				  </div>
+				  <span class="font-extrabold text-xs tracking-wider text-gray-900 uppercase">QUALITY GUARANTEE</span>
+				</div>
+
+				<!-- Column 6: Free Consultation -->
+				<div class="flex flex-col items-center text-center group cursor-pointer" onclick="openLeadModal('Free Consultation Booking')">
+				  <div class="w-16 h-16 sm:w-20 sm:h-20 mb-3 flex items-center justify-center relative">
+					<svg class="w-14 h-14 text-gray-900 group-hover:scale-105 transition-transform" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+					  <path d="M4 20l7-16 9 9-16 7z" stroke="currentColor"/>
+					  <circle cx="18" cy="5" r="1.5" fill="#fc0384"/>
+					  <circle cx="21" cy="9" r="1" fill="#fc0384"/>
+					  <circle cx="14" cy="3" r="1" fill="#fc0384"/>
+					</svg>
+				  </div>
+				  <span class="font-extrabold text-xs tracking-wider text-gray-900 uppercase">FREE CONSULTATION</span>
+				</div>
+
+			  </div>
+			</div>
+		  </section>
+
+		  <!-- ================= PROFESSIONAL SKILL SETS & SPECIALIZATIONS SECTION ================= -->
+		  <section class="w-full bg-slate-100 py-12 px-4 border-t border-b border-gray-200">
+			<div class="max-w-7xl mx-auto flex flex-col items-center">
+			  
+			  <!-- Section Header -->
+			  <div class="text-center max-w-2xl mb-10">
+				<span class="bg-[#fc0384] text-white text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">
+				  CORE COMPETENCIES
+				</span>
+				<h2 class="text-2xl sm:text-3xl font-extrabold text-gray-900 mt-3 tracking-tight">
+				  Professional Skill Sets & Specializations
+				</h2>
+				<p class="text-xs sm:text-sm text-gray-600 mt-2">
+				  Combining web execution, video production, customer satisfaction, and office operations into an all-in-one execution stack.
+				</p>
+			  </div>
+
+			  <!-- 4 Skill Cards Grid -->
+			  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-6xl">
+				
+				<!-- Card 1: Front-End Developer -->
+				<div class="bg-white rounded-2xl p-6 border border-gray-200 hover:border-[#fc0384] transition-all duration-300 hover:shadow-xl flex flex-col justify-between group">
+				  <div>
+					<div class="w-12 h-12 rounded-xl bg-pink-50 border border-pink-100 flex items-center justify-center mb-4 group-hover:bg-[#fc0384] transition-colors">
+					  <i class="fa-solid fa-code text-[#fc0384] group-hover:text-white text-xl transition-colors"></i>
+					</div>
+					<h3 class="text-lg font-bold text-gray-900 mb-1">Front-End Developer</h3>
+					<p class="text-xs font-semibold text-[#fc0384] mb-3">Modern Web Interfaces</p>
+					<p class="text-xs text-gray-600 leading-relaxed mb-4">
+					  Building responsive, high-performance web applications using standard front-end technologies with clean code standards.
+					</p>
+					<ul class="space-y-1.5 text-[11px] text-gray-600 font-medium border-t border-gray-100 pt-3">
+					  <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#fc0384]"></i> HTML5, CSS3 & JavaScript (ES6+)</li>
+					  <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#fc0384]"></i> Tailwind CSS & Responsive Layouts</li>
+					  <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#fc0384]"></i> Single-File Apps & Performance</li>
+					</ul>
+				  </div>
+				  <button onclick="switchTab('services-tab')" class="mt-6 w-full py-2 bg-gray-50 hover:bg-[#fc0384] hover:text-white text-gray-800 text-xs font-bold rounded-lg transition-colors border border-gray-200 hover:border-[#fc0384]">
+					Click here
+				  </button>
+				</div>
+
+				<!-- Card 2: Video Editor -->
+				<div class="bg-white rounded-2xl p-6 border border-gray-200 hover:border-[#fc0384] transition-all duration-300 hover:shadow-xl flex flex-col justify-between group">
+				  <div>
+					<div class="w-12 h-12 rounded-xl bg-pink-50 border border-pink-100 flex items-center justify-center mb-4 group-hover:bg-[#fc0384] transition-colors">
+					  <i class="fa-solid fa-wand-magic-sparkles text-[#fc0384] group-hover:text-white text-xl transition-colors"></i>
+					</div>
+					<h3 class="text-lg font-bold text-gray-900 mb-1">Video Editor</h3>
+					<p class="text-xs font-semibold text-[#fc0384] mb-3">High-Retention Video Editing</p>
+					<p class="text-xs text-gray-600 leading-relaxed mb-4">
+					  Crafting viral short-form reels and polished long-form edits engineered to boost watch time and engagement.
+					</p>
+					<ul class="space-y-1.5 text-[11px] text-gray-600 font-medium border-t border-gray-100 pt-3">
+					  <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#fc0384]"></i> TikTok, Reels & Shorts Formatting</li>
+					  <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#fc0384]"></i> 4K Quality & Motion Graphics</li>
+					  <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#fc0384]"></i> Audio Balancing & Color Grading</li>
+					</ul>
+				  </div>
+				  <button onclick="switchTab('editor-tab')" class="mt-6 w-full py-2 bg-gray-50 hover:bg-[#fc0384] hover:text-white text-gray-800 text-xs font-bold rounded-lg transition-colors border border-gray-200 hover:border-[#fc0384]">
+					Click here
+				  </button>
+				</div>
+
+				<!-- Card 3: Customer Support -->
+				<div class="bg-white rounded-2xl p-6 border border-gray-200 hover:border-[#fc0384] transition-all duration-300 hover:shadow-xl flex flex-col justify-between group">
+				  <div>
+					<div class="w-12 h-12 rounded-xl bg-pink-50 border border-pink-100 flex items-center justify-center mb-4 group-hover:bg-[#fc0384] transition-colors">
+					  <i class="fa-solid fa-headset text-[#fc0384] group-hover:text-white text-xl transition-colors"></i>
+					</div>
+					<h3 class="text-lg font-bold text-gray-900 mb-1">Customer Support</h3>
+					<p class="text-xs font-semibold text-[#fc0384] mb-3">CSAT & User Satisfaction</p>
+					<p class="text-xs text-gray-600 leading-relaxed mb-4">
+					  Providing technical support and empathetic user communication to keep ticket backlogs low and retention high.
+					</p>
+					<ul class="space-y-1.5 text-[11px] text-gray-600 font-medium border-t border-gray-100 pt-3">
+					  <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#fc0384]"></i> 24/7 Response & SLAs</li>
+					  <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#fc0384]"></i> Live Chat & Ticket Desk</li>
+					  <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#fc0384]"></i> User Onboarding & FAQs</li>
+					</ul>
+				  </div>
+				  <button onclick="switchTab('support-tab')" class="mt-6 w-full py-2 bg-gray-50 hover:bg-[#fc0384] hover:text-white text-gray-800 text-xs font-bold rounded-lg transition-colors border border-gray-200 hover:border-[#fc0384]">
+					Click here
+				  </button>
+				</div>
+
+				<!-- Card 4: Back-Office & Operations -->
+				<div class="bg-white rounded-2xl p-6 border border-gray-200 hover:border-[#fc0384] transition-all duration-300 hover:shadow-xl flex flex-col justify-between group">
+				  <div>
+					<div class="w-12 h-12 rounded-xl bg-pink-50 border border-pink-100 flex items-center justify-center mb-4 group-hover:bg-[#fc0384] transition-colors">
+					  <i class="fa-solid fa-file-excel text-[#fc0384] group-hover:text-white text-xl transition-colors"></i>
+					</div>
+					<h3 class="text-lg font-bold text-gray-900 mb-1">Back-Office & Operations</h3>
+					<p class="text-xs font-semibold text-[#fc0384] mb-3">CRM & Spreadsheets Specialist</p>
+					<p class="text-xs text-gray-600 leading-relaxed mb-4">
+					  Managing complex database workflows, spreadsheet formulas, CRM platforms, and routine back-office tasks accurately.
+					</p>
+					<ul class="space-y-1.5 text-[11px] text-gray-600 font-medium border-t border-gray-100 pt-3">
+					  <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#fc0384]"></i> Advanced Excel & Google Sheets</li>
+					  <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#fc0384]"></i> CRM (HubSpot, Salesforce)</li>
+					  <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#fc0384]"></i> Data Entry & Operations</li>
+					</ul>
+				  </div>
+				  <button onclick="openLeadModal('Request Support', 'Contact for back-office and operations support')" class="mt-6 w-full py-2 bg-gray-50 hover:bg-[#fc0384] hover:text-white text-gray-800 text-xs font-bold rounded-lg transition-colors border border-gray-200 hover:border-[#fc0384]">
+					click here
+				  </button>
+				</div>
+
+			  </div>
+			</div>
+		  </section>
+
+		  <!-- ================= DARK FOOTER SECTION (MATCHING SCREENSHOT EXACTLY) ================= -->
+		  <footer class="w-full bg-[#1e1e1e] text-gray-300 pt-8 pb-12 px-4 sm:px-8 border-t border-gray-800">
+			<div class="max-w-7xl mx-auto">
+			  
+			  <!-- HEADER ROW: SOCIAL & LANGUAGE TOGGLE -->
+			  <div class="flex flex-col sm:flex-row justify-between items-center pb-6 border-b border-gray-800 mb-8 gap-4">
+				
+				<!-- Left: Follow Me & Social Icons -->
+				<div class="flex items-center gap-4">
+				  <span class="font-bold text-white text-sm">Follow Me</span>
+				  <div class="flex items-center gap-3 text-lg text-gray-300">
+					<a href="#" onclick="openLeadModal('Instagram Social Link')" class="hover:text-[#fc0384] transition-colors"><i class="fa-brands fa-instagram"></i></a>
+					<a href="#" onclick="openLeadModal('Facebook Social Link')" class="hover:text-[#fc0384] transition-colors"><i class="fa-brands fa-facebook"></i></a>
+					<a href="#" onclick="openLeadModal('YouTube Social Link')" class="hover:text-[#fc0384] transition-colors"><i class="fa-brands fa-youtube"></i></a>
+				  </div>
+				</div>
+
+				<!-- Right: Language Selector -->
+				<div class="flex items-center gap-3 text-xs">
+				  <button onclick="openLeadModal('Language Switch - English')" class="font-bold text-white hover:underline">English</button>
+				  <span class="text-gray-600">|</span>
+				  <button onclick="openLeadModal('Language Switch - Español')" class="text-gray-400 hover:text-white transition-colors">Español</button>
+				  <button onclick="openLeadModal('Language Switch - Tagalog')" class="text-gray-400 hover:text-white transition-colors">Tagalog</button>
+				</div>
+
+			  </div>
+
+			  <!-- 6 NAVIGATION COLUMNS -->
+			  <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 text-xs mb-10">
+				
+				<!-- Column 1 -->
+				<div>
+				  <h4 class="font-bold text-white text-xs mb-3">Front-End Services</h4>
+				  <ul class="space-y-2 text-gray-400">
+					<li><a href="#" onclick="switchTab('services-tab')" class="hover:text-white transition-colors">Custom Web Apps</a></li>
+					<li><a href="#" onclick="switchTab('services-tab')" class="hover:text-white transition-colors">Responsive UI/UX</a></li>
+					<li><a href="#" onclick="switchTab('services-tab')" class="hover:text-white transition-colors">Performance Tuning</a></li>
+					<li><a href="#" onclick="switchTab('services-tab')" class="hover:text-white transition-colors">React & JS Solutions</a></li>
+					<li><a href="#" onclick="switchTab('services-tab')" class="hover:text-white transition-colors">Bug Fixes & Audits</a></li>
+				  </ul>
+				</div>
+
+				<!-- Column 2 -->
+				<div>
+				  <h4 class="font-bold text-white text-xs mb-3">Video Editing</h4>
+				  <ul class="space-y-2 text-gray-400">
+					<li><a href="#" onclick="switchTab('services-tab')" class="hover:text-white transition-colors">Reels & TikTok Cuts</a></li>
+					<li><a href="#" onclick="switchTab('services-tab')" class="hover:text-white transition-colors">Long-Form YouTube</a></li>
+					<li><a href="#" onclick="switchTab('services-tab')" class="hover:text-white transition-colors">Color & Audio Grading</a></li>
+					<li><a href="#" onclick="switchTab('services-tab')" class="hover:text-white transition-colors">Motion Graphics</a></li>
+					<li><a href="#" onclick="switchTab('services-tab')" class="hover:text-white transition-colors">Subtitles & Captions</a></li>
+				  </ul>
+				</div>
+
+				<!-- Column 3 -->
+				<div>
+				  <h4 class="font-bold text-white text-xs mb-3">Customer Support</h4>
+				  <ul class="space-y-2 text-gray-400">
+					<li><a href="#" onclick="switchTab('support-tab')" class="hover:text-white transition-colors">24/7 Live Chat Support</a></li>
+					<li><a href="#" onclick="switchTab('support-tab')" class="hover:text-white transition-colors">Technical Support</a></li>
+					<li><a href="#" onclick="switchTab('support-tab')" class="hover:text-white transition-colors">Help Center Setup</a></li>
+					<li><a href="#" onclick="switchTab('support-tab')" class="hover:text-white transition-colors">Client Onboarding</a></li>
+					<li><a href="#" onclick="switchTab('support-tab')" class="hover:text-white transition-colors">CSAT & Retention</a></li>
+				  </ul>
+				</div>
+
+				<!-- Column 5 -->
+				<div>
+				  <h4 class="font-bold text-white text-xs mb-3">Hire & Work Together</h4>
+				  <ul class="space-y-2 text-gray-400">
+					<li><a href="#" onclick="openLeadModal('Contract & Freelance Request')" class="hover:text-white transition-colors">Contract & Freelance</a></li>
+					<li><a href="#" onclick="openLeadModal('Full-Time Remote Request')" class="hover:text-white transition-colors">Full-Time Remote</a></li>
+					<li><a href="#" onclick="openLeadModal('Consultation Call Booking')" class="hover:text-white transition-colors">Consultation Call</a></li>
+					<li><a href="#" onclick="openLeadModal('Rate Card Inquiry')" class="hover:text-white transition-colors">Rate Card & Pricing</a></li>
+					<li><a href="#" onclick="openLeadModal('Project Roadmap Inquiry')" class="hover:text-white transition-colors">Project Roadmap</a></li>
+				  </ul>
+				</div>
+
+				<!-- Column 6 -->
+				<div>
+				  <h4 class="font-bold text-white text-xs mb-3">Support & Contact</h4>
+				  <ul class="space-y-2 text-gray-400">
+					<li><a href="#" onclick="switchTab('support-tab')" class="hover:text-white transition-colors">Direct Email Desk</a></li>
+					<li><a href="#" onclick="switchTab('faq-tab')" class="hover:text-white transition-colors">FAQ Directory</a></li>
+					<li><a href="#" onclick="switchTab('support-tab')" class="hover:text-white transition-colors">Response SLA Guarantee</a></li>
+					<li><a href="#" onclick="openLeadModal('Book a Call Request')" class="hover:text-white transition-colors">Book a Call</a></li>
+					<li><a href="#" onclick="openLeadModal('Download Resume Request')" class="hover:text-white transition-colors">Download Resume</a></li>
+				  </ul>
+				</div>
+
+			  </div>
+
+			  <!-- CENTERED PAYMENT METHOD SECTION -->
+			  <div class="payment-container border-t border-gray-800 pt-6">
+				<span class="text-xs font-semibold text-gray-300 mb-2">We accept:</span>
+				<div class="icons-group">
+				  
+				  <!-- Visa -->
+				  <a href="#" class="payment-btn" title="Visa" onclick="openLeadModal('Visa Payment Option')">
+					<span class="payment-badge badge-visa">VISA</span>
+				  </a>
+
+				  <!-- MasterCard -->
+				  <a href="#" class="payment-btn" title="Mastercard" onclick="openLeadModal('Mastercard Payment Option')">
+					<span class="payment-badge badge-mastercard">
+					  <i class="fa-brands fa-cc-mastercard text-lg"></i>
+					</span>
+				  </a>
+
+				  <!-- American Express -->
+				  <a href="#" class="payment-btn" title="American Express" onclick="openLeadModal('Amex Payment Option')">
+					<span class="payment-badge badge-amex">AM EX</span>
+				  </a>
+
+				  <!-- Discover -->
+				  <a href="#" class="payment-btn" title="Discover" onclick="openLeadModal('Discover Payment Option')">
+					<span class="payment-badge badge-discover">DISCOVER</span>
+				  </a>
+
+				  <!-- PayPal -->
+				  <a href="#" class="payment-btn" title="PayPal" onclick="openLeadModal('PayPal Payment Option')">
+					<span class="payment-badge badge-paypal">PayPal</span>
+				  </a>
+
+				  <!-- GCash -->
+				  <a href="#" class="payment-btn" title="GCash" onclick="openLeadModal('GCash Payment Option')">
+					<span class="payment-badge badge-gcash">
+					  <i class="fa-solid fa-q text-lg"></i>
+					</span>
+				  </a>
+
+				  <!-- Bitcoin -->
+				  <a href="#" class="payment-btn" title="Bitcoin" onclick="openLeadModal('Bitcoin Payment Option')">
+					<span class="payment-badge badge-bitcoin">
+					  <i class="fa-brands fa-bitcoin"></i>
+					</span>
+				  </a>
+
+				</div>
+			  </div>
+
+			  <!-- COPYRIGHT FOOTER -->
+			  <div class="text-center text-[11px] text-gray-500 mt-6 pt-4 border-t border-gray-800">
+				&copy; 2026 Audie Pino Portfolio & Video Editor Suite. All rights reserved.
+			  </div>
+
+			</div>
+		  </footer>
+
+		  <!-- ================= SIGN IN MODAL ================= -->
+		  <div id="signInModal" class="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4 hidden">
+			<div class="bg-white rounded-2xl max-w-md w-full p-6 sm:p-8 relative shadow-2xl">
+			  <button onclick="closeSignInModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-900 text-xl font-bold p-1">
+				<i class="fa-solid fa-xmark"></i>
+			  </button>
+
+			  <div class="mb-6 text-center">
+				<div class="w-12 h-12 bg-pink-50 rounded-full flex items-center justify-center mx-auto mb-2 text-[#fc0384] text-xl">
+				  <i class="fa-solid fa-right-to-bracket"></i>
+				</div>
+				<h3 class="text-2xl font-extrabold text-gray-900">Welcome Back</h3>
+			  </div>
+
+			  <form onsubmit="handleAuthSubmit(event, 'Sign In')" class="space-y-4">
+				<div>
+				  <label class="block text-xs font-bold text-gray-800 mb-1">Email Address *</label>
+				  <input type="email" required placeholder="your.name@domain.com" 
+						 class="w-full text-xs p-3 rounded-lg border border-gray-300 focus:outline-none focus:border-[#fc0384] focus:ring-1 focus:ring-[#fc0384]">
+				</div>
+
+				<div>
+				  <div class="flex justify-between items-center mb-1">
+					<label class="block text-xs font-bold text-gray-800">Password *</label>
+					<button type="button" onclick="closeSignInModal(); openLeadModal('Password Reset Request')" class="text-[11px] text-[#fc0384] hover:underline font-semibold">
+					  Forgot?
+					</button>
+				  </div>
+				  <input type="password" required placeholder="••••••••" 
+						 class="w-full text-xs p-3 rounded-lg border border-gray-300 focus:outline-none focus:border-[#fc0384] focus:ring-1 focus:ring-[#fc0384]">
+				</div>
+
+				<div class="flex items-center justify-between text-xs text-gray-600 pt-1">
+				  <label class="flex items-center gap-2 cursor-pointer">
+					<input type="checkbox" class="rounded text-[#fc0384] focus:ring-[#fc0384]">
+					<span>Remember me</span>
+				  </label>
+				</div>
+
+				<button type="submit" 
+						class="w-full py-3 bg-[#fc0384] hover:bg-[#d9006c] text-white font-extrabold text-xs uppercase tracking-wider rounded-lg transition-all shadow-md mt-2">
+				  Sign In
+				</button>
+			  </form>
+
+			  <div class="mt-6 pt-4 border-t border-gray-100 text-center text-xs text-gray-600">
+				Don't have an account? 
+				<button onclick="closeSignInModal(); openSignUpModal();" class="text-[#fc0384] font-bold hover:underline ml-1">
+				  Sign Up
+				</button>
+			  </div>
+			</div>
+		  </div>
+
+		  <!-- ================= SIGN UP MODAL (EMAIL & QR CODE OPTIONS) ================= -->
+		  <div id="signUpModal" class="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4 hidden">
+			<div class="bg-white rounded-2xl max-w-md w-full p-6 sm:p-8 relative shadow-2xl">
+			  <button onclick="closeSignUpModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-900 text-xl font-bold p-1">
+				<i class="fa-solid fa-xmark"></i>
+			  </button>
+
+			  <div class="mb-4 text-center">
+				<div class="w-12 h-12 bg-pink-50 rounded-full flex items-center justify-center mx-auto mb-2 text-[#fc0384] text-xl">
+				  <i class="fa-solid fa-user-plus"></i>
+				</div>
+				<h3 class="text-2xl font-extrabold text-gray-900">Create Your Account</h3>
+				<p class="text-xs text-gray-600 mt-1">Register using any email domain or scan with QR code.</p>
+			  </div>
+
+			  <!-- Registration Method Tabs -->
+			  <div class="flex border-b border-gray-200 mb-5 text-xs">
+				<button id="tab-email-reg" onclick="switchSignUpTab('email')" class="auth-tab-btn flex-1 py-2 text-center font-semibold text-gray-500 active">
+				  <i class="fa-regular fa-envelope mr-1.5"></i> Any Email Domain
+				</button>
+				<button id="tab-qr-reg" onclick="switchSignUpTab('qr')" class="auth-tab-btn flex-1 py-2 text-center font-semibold text-gray-500">
+				  <i class="fa-solid fa-qrcode mr-1.5"></i> QR Code Sign Up
+				</button>
+			  </div>
+
+			  <!-- Option A: Standard Email Form (Any Domain Allowed) -->
+			  <div id="signUpEmailView">
+				<form onsubmit="handleAuthSubmit(event, 'Sign Up - Email')" class="space-y-3.5">
+				  <div>
+					<label class="block text-xs font-bold text-gray-800 mb-1">Full Name *</label>
+					<input type="text" required placeholder="Alex Johnson" 
+						   class="w-full text-xs p-3 rounded-lg border border-gray-300 focus:outline-none focus:border-[#fc0384] focus:ring-1 focus:ring-[#fc0384]">
+				  </div>
+
+				  <div>
+					<label class="block text-xs font-bold text-gray-800 mb-1">Email Address (Any Domain) *</label>
+					<input type="email" required placeholder="name@any-company-or-domain.com" 
+						   class="w-full text-xs p-3 rounded-lg border border-gray-300 focus:outline-none focus:border-[#fc0384] focus:ring-1 focus:ring-[#fc0384]">
+					<span class="text-[10px] text-gray-500 mt-0.5 block">Supports Gmail, Outlook, Yahoo, or custom corporate domains.</span>
+				  </div>
+
+				  <div>
+					<label class="block text-xs font-bold text-gray-800 mb-1">Password *</label>
+					<input type="password" required placeholder="Create a strong password" 
+						   class="w-full text-xs p-3 rounded-lg border border-gray-300 focus:outline-none focus:border-[#fc0384] focus:ring-1 focus:ring-[#fc0384]">
+				  </div>
+
+				  <div>
+					<label class="block text-xs font-bold text-gray-800 mb-1">Confirm Password *</label>
+					<input type="password" required placeholder="Repeat your password" 
+						   class="w-full text-xs p-3 rounded-lg border border-gray-300 focus:outline-none focus:border-[#fc0384] focus:ring-1 focus:ring-[#fc0384]">
+				  </div>
+
+				  <button type="submit" 
+						  class="w-full py-3 bg-[#fc0384] hover:bg-[#d9006c] text-white font-extrabold text-xs uppercase tracking-wider rounded-lg transition-all shadow-md mt-2">
+					Create Account
+				  </button>
+				</form>
+			  </div>
+			  
+			  <!-- Option B: QR Code Registration View -->
+			  <div id="signUpQRView" class="hidden text-center py-2">
+				<div class="bg-gray-50 p-6 rounded-2xl border border-gray-200 inline-block shadow-inner mb-4">
+				  <!-- Stylized Inline SVG QR Code -->
+				  <svg class="w-44 h-44 mx-auto text-gray-900" viewBox="0 0 100 100" fill="currentColor">
+					<rect x="0" y="0" width="100" height="100" fill="#ffffff" rx="8"/>
+					<!-- Outer Finder Patterns -->
+					<rect x="8" y="8" width="28" height="28" fill="#0f172a" rx="4"/>
+					<rect x="12" y="12" width="20" height="20" fill="#ffffff" rx="2"/>
+					<rect x="16" y="16" width="12" height="12" fill="#fc0384" rx="1"/>
+
+					<rect x="64" y="8" width="28" height="28" fill="#0f172a" rx="4"/>
+					<rect x="68" y="12" width="20" height="20" fill="#ffffff" rx="2"/>
+					<rect x="72" y="16" width="12" height="12" fill="#fc0384" rx="1"/>
+
+					<rect x="8" y="64" width="28" height="28" fill="#0f172a" rx="4"/>
+					<rect x="12" y="68" width="20" height="20" fill="#ffffff" rx="2"/>
+					<rect x="16" y="72" width="12" height="12" fill="#fc0384" rx="1"/>
+
+					<!-- QR Data Grid Details -->
+					<rect x="42" y="10" width="6" height="6" fill="#0f172a"/>
+					<rect x="52" y="10" width="6" height="6" fill="#fc0384"/>
+					<rect x="42" y="20" width="16" height="6" fill="#0f172a"/>
+					<rect x="10" y="42" width="6" height="16" fill="#fc0384"/>
+					<rect x="20" y="42" width="12" height="6" fill="#0f172a"/>
+					<rect x="36" y="36" width="28" height="28" fill="#0f172a" rx="3"/>
+					<rect x="44" y="44" width="12" height="12" fill="#ffffff" rx="1"/>
+					<circle cx="50" cy="50" r="4" fill="#fc0384"/>
+					<rect x="70" y="42" width="20" height="6" fill="#0f172a"/>
+					<rect x="70" y="52" width="10" height="10" fill="#fc0384"/>
+					<rect x="42" y="70" width="12" height="6" fill="#0f172a"/>
+					<rect x="42" y="80" width="6" height="10" fill="#0f172a"/>
+					<rect x="52" y="76" width="14" height="14" fill="#fc0384" rx="2"/>
+					<rect x="72" y="72" width="18" height="18" fill="#0f172a" rx="2"/>
+				  </svg>
+				</div>
+
+				<p class="text-xs font-bold text-gray-800">Scan with your phone camera</p>
+				<p class="text-[11px] text-gray-500 mt-1 max-w-xs mx-auto">
+				  Instantly complete your registration or passkey authentication on mobile without typing credentials.
+				</p>
+
+				<button onclick="handleAuthSubmit(event, 'Sign Up - QR Passkey Scan')" 
+						class="w-full py-2.5 bg-gray-900 hover:bg-black text-white font-extrabold text-xs rounded-lg transition-all mt-4 flex items-center justify-center gap-2">
+				  <i class="fa-solid fa-[#fc0384] fa-mobile-screen"></i> Simulated Mobile Quick Verify
+				</button>
+			  </div>
+
+			  <div class="mt-5 pt-3 border-t border-gray-100 text-center text-xs text-gray-600">
+				Already have an account? 
+				<button onclick="closeSignUpModal(); openSignInModal();" class="text-[#fc0384] font-bold hover:underline ml-1">
+				  Sign In
+				</button>
+			  </div>
+			</div>
+		  </div>
+
+		  <!-- ================= LEAD FORM MODAL (SENDS TO EIDUA.ONIP@GMAIL.COM) ================= -->
+		  <div id="leadModal" class="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4 hidden">
+			<div class="bg-white rounded-2xl max-w-lg w-full p-6 sm:p-8 relative shadow-2xl overflow-y-auto max-h-[90vh]">
+			  
+			  <!-- Modal Close Button -->
+			  <button onclick="closeLeadModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-900 text-xl font-bold p-1">
+				<i class="fa-solid fa-xmark"></i>
+			  </button>
+
+			  <!-- Modal Header -->
+			  <div class="mb-6">
+				<h3 id="modalSourceTitle" class="text-xl sm:text-2xl font-extrabold text-gray-900 mt-2">
+				  Get Started & Elevate Your Content
+				</h3>
+				<p class="text-xs text-gray-600 mt-1">
+				  Please fill out the form below.
+				</p>
+			  </div>
+
+			  <!-- Formspree Endpoint Form -->
+			  <form action="https://formspree.io/f/eidua.onip@gmail.com" method="POST" class="space-y-4">
+			  <form action="https://formspree.io/f/xkjoenka" method="POST" style="display: flex; flex-direction: column; gap: 15px;">
+				
+				<input type="hidden" name="Inquiry_Source" id="formInquirySource" value="General CTA">
+
+				<!-- Full Name -->
+				<div>
+				  <label class="block text-xs font-bold text-gray-800 mb-1">Full Name *</label>
+				  <input type="text" name="Full_Name" required placeholder="John Doe" 
+						 class="w-full text-xs p-3 rounded-lg border border-gray-300 focus:outline-none focus:border-[#fc0384] focus:ring-1 focus:ring-[#fc0384]">
+				</div>
+
+				<!-- Address -->
+				<div>
+				  <label class="block text-xs font-bold text-gray-800 mb-1">Address *</label>
+				  <input type="text" name="Address" required placeholder="123 Main Street, City, Country" 
+						 class="w-full text-xs p-3 rounded-lg border border-gray-300 focus:outline-none focus:border-[#fc0384] focus:ring-1 focus:ring-[#fc0384]">
+				</div>
+
+				<!-- Email Address -->
+				<div>
+				  <label class="block text-xs font-bold text-gray-800 mb-1">Email Address *</label>
+				  <input type="email" name="_replyto" required placeholder="john@example.com" 
+						 class="w-full text-xs p-3 rounded-lg border border-gray-300 focus:outline-none focus:border-[#fc0384] focus:ring-1 focus:ring-[#fc0384]">
+				</div>
+
+				<!-- Phone Number -->
+				<div>
+					  <label class="block text-xs font-bold text-gray-800 mb-1">Phone Number *</label>
+					  <input type="tel" name="Phone_Number" required placeholder="+1 (555) 000-0000" 
+							 class="w-full text-xs p-3 rounded-lg border border-gray-300 focus:outline-none focus:border-[#fc0384] focus:ring-1 focus:ring-[#fc0384]">
+					</div>
+
+					<!-- State Reason / Project Category -->
+					<div>
+					  <label class="block text-xs font-bold text-gray-800 mb-1">State Your Reason *</label>
+					  <textarea name="Reason_Details" rows="3" required placeholder="Please state your reason for reaching out, project goals, or specific inquiries..." 
+								class="w-full text-xs p-3 rounded-lg border border-gray-300 focus:outline-none focus:border-[#fc0384] focus:ring-1 focus:ring-[#fc0384]"></textarea>
+					</div>
+
+					<!-- Submit Button -->
+					<button type="submit" 
+							class="w-full py-3 bg-[#fc0384] hover:bg-[#d9006c] text-white font-extrabold text-xs uppercase tracking-wider rounded-lg transition-all shadow-md mt-2">
+					  Submit & Send Email
+					</button>
+
+				  </form>
+				</div>
+			  </div>
+			  
+	<!-- ================= END CONTACT SECTION ================= -->
+			  <!-- INTERACTIVE MODAL & TAB SWITCHING SCRIPT -->
+			  <script>
+				function switchTab(tabId) {
+				  document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+				  document.getElementById(tabId).classList.remove('hidden');
+				  document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active'));
+				  const activeNav = document.getElementById('btn-' + tabId);
+				  if (activeNav) activeNav.classList.add('active');
+				}
+
+				/* --- Lead Capture Modal Handlers --- */
+				function openLeadModal(sourceTitle, msg) {
+				  document.getElementById('formInquirySource').value = sourceTitle || 'General Inquiry';
+				  document.getElementById('modalSourceTitle').innerText = sourceTitle || 'Get Started & Elevate Your Content';
+				  document.getElementById('leadModal').classList.remove('hidden');
+				}
+
+				function closeLeadModal() {
+				  document.getElementById('leadModal').classList.add('hidden');
+				}
+
+				/* --- Sign In Modal Handlers --- */
+				function openSignInModal(isForgot) {
+				  document.getElementById('signInModal').classList.remove('hidden');
+				}
+
+				function closeSignInModal() {
+				  document.getElementById('signInModal').classList.add('hidden');
+				}
+
+				/* --- Sign Up Modal Handlers --- */
+				function openSignUpModal() {
+				  document.getElementById('signUpModal').classList.remove('hidden');
+				  switchSignUpTab('email');
+				}
+
+				function closeSignUpModal() {
+				  document.getElementById('signUpModal').classList.add('hidden');
+				}
+
+				function switchSignUpTab(tab) {
+				  const emailBtn = document.getElementById('tab-email-reg');
+				  const qrBtn = document.getElementById('tab-qr-reg');
+				  const emailView = document.getElementById('signUpEmailView');
+				  const qrView = document.getElementById('signUpQRView');
+
+				  if (tab === 'email') {
+					emailBtn.classList.add('active');
+					qrBtn.classList.remove('active');
+					emailView.classList.remove('hidden');
+					qrView.classList.add('hidden');
+				  } else {
+					qrBtn.classList.add('active');
+					emailBtn.classList.remove('active');
+					qrView.classList.remove('hidden');
+					emailView.classList.add('hidden');
+				  }
+				}
+
+				/* --- Auth Handlers --- */
+				function handleAuthSubmit(e, actionType) {
+				  e.preventDefault();
+				  closeSignInModal();
+				  closeSignUpModal();
+				  openLeadModal(actionType + ' Completed Successfully', 'Your ' + actionType + ' has been processed.');
+				}
+
+			  </script>
+			</body>
+			</html>
